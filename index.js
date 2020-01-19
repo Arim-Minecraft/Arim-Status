@@ -31,7 +31,7 @@ function fullStatBack (err, stat) {
 
 setInterval(function () {
   checkMcServer()
-}, 5000)
+}, 5000);
 
 
 client.on('message', message => {
