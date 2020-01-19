@@ -2,14 +2,40 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-var request = require('request');
-var mcCommand = '/status'; // Command for triggering
-var mcIP = 'arim.space'; // Your MC server IP or hostname address
-var mcPort = 25565; // Your MC server port (25565 is the default) 
+const Query = require("minecraft-query");
+
+const query = new Query(mcIP, mcPort, { timeout: 10000 });
+
+const request = require('request');
+const statusCmd = '/status';
+const queryCmd = '/query';
+const mcIP = 'arim.space';
+const mcPort = 25565;
+
+function checkMcServer () {
+  query.connect(function (err) {
+    if (err) {
+      console.error(err);
+    } else {
+      query.full_stat(fullStatBack);
+    }
+  })
+}
+
+function fullStatBack (err, stat) {
+  if (err) {
+    console.error(err);
+  }
+  console.log('%s>fullBack \n', new Date(), stat);
+}
+
+setInterval(function () {
+  checkMcServer()
+}, 5000)
 
 
 client.on('message', message => {
-    if (message.content === mcCommand) {
+    if (message.content === statusCmd) {
         var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
         request(url, function(err, response, body) {
             if(err) {
@@ -28,6 +54,9 @@ client.on('message', message => {
             }
             message.reply(status);
         });
+    } else if (message.content === queryCmd) {
+        message.reply('Working on this...');
+        
     }
 });
 
