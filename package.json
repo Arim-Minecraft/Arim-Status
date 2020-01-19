@@ -1,0 +1,19 @@
+{
+  "name": "Arim-Status",
+  "description": "Discord bot for Arim Minecraft Server",
+  "version": "0.1.0",
+  "license": "See license file LICENSE.txt",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "@discordjs/uws": "^10.149.0",
+    "discord.js": "^11.5.1",
+    "request": "2.88.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/A248/Arim-Status.git"
+  }
+}
