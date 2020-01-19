@@ -4,8 +4,12 @@
   "version": "0.1.0",
   "license": "See license file LICENSE.txt",
   "main": "bot.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "*"
+  },
   "scripts": {
-    "start": "node bot.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "@discordjs/uws": "^10.149.0",
