@@ -11,7 +11,7 @@ const mcPort = 25565;
 
 const queryCmd = '/query';
 const Query = require("minecraft-query");
-const query = new Query(mcIP, mcPort, { timeout: 10000 });
+const query = new Query({host: mcIP, port: mcPort, timeout: 10000 });
 
 let playerCount = 0;
 
