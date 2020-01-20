@@ -98,7 +98,7 @@ function checkWebsite() {
 }
 
 async function checkAll() {
-  q.basicStat().then(success => handleQuery(success)).catch(ex => handleDown(ex));
+  query.basicStat().then(success => handleQuery(success)).catch(ex => handleDown(ex));
   checkWebsite();
 }
 
