@@ -4,34 +4,13 @@ const client = new Discord.Client();
 
 const request = require('request');
 const statusCmd = '/status';
-const queryCmd = '/query';
 const mcIP = 'arim.space';
 const mcPort = 25565;
 
-const Query = require("minecraft-query");
 
-const query = new Query(mcIP, mcPort, { timeout: 10000 });
-
-function checkMcServer () {
-  query.connect(function (err) {
-    if (err) {
-      console.error(err);
-    } else {
-      query.full_stat(fullStatBack);
-    }
-  })
-}
-
-function fullStatBack (err, stat) {
-  if (err) {
-    console.error(err);
-  }
-  console.log('%s>fullBack \n', new Date(), stat);
-}
-
-setInterval(function () {
-  checkMcServer()
-}, 5000);
+//const queryCmd = '/query';
+//const Query = require("minecraft-query");
+//const query = new Query(mcIP, mcPort, { timeout: 10000 });
 
 
 client.on('message', message => {
@@ -54,9 +33,6 @@ client.on('message', message => {
             }
             message.reply(status);
         });
-    } else if (message.content === queryCmd) {
-        message.reply('Working on this...');
-        
     }
 });
 
