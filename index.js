@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 const https = require('https');
 
-const request = require('request');
+//const request = require('request');
 const statusCmd = '/status';
 const mcIP = 'arim.space';
 const mcPort = 25565;
@@ -19,6 +19,19 @@ let website = true;
 
 client.on('message', message => {
     if (message.content === statusCmd) {
+      checkAll();
+      var webStatus = "The website is **online**.";
+      var serverStatus = "The server is **online**.";
+      if (!website) {
+        webStatus = "The website is **down**.";
+      }
+      if (playerCount == -1) {
+        serverStatus = "The server is **down**.";
+      } else {
+        serverStatus += " Players: " + playerCount;
+      }
+      message.reply("\n" + serverStatus + "\n" + webStatus);
+        /*
         var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
         request(url, function(err, response, body) {
             if(err) {
@@ -37,14 +50,18 @@ client.on('message', message => {
             }
             message.reply(status);
         });
+        */
+
     }
 });
-//guild id
-//568772431347449867
-//in-game channel id
-//629826592717144095
-//website channel id
-//668134910221090858
+/*
+guild id
+568772431347449867
+in-game channel id
+629826592717144095
+website channel id
+668134910221090858
+*/
 
 client.login(process.env.BOT_TOKEN);
 
@@ -61,9 +78,9 @@ function handleQuery(res) {
     if (current != playerCount) {
       playerCount = current;
       if (playerCount == 0) {
-        sendMessage("No more players online :(");
+        sendMessage("No more players online.");
       } else {
-        sendMessage("There are now " + playerCount + " players online.");
+        sendMessage(playerCount + " players online!");
       }
     }
 }
@@ -71,8 +88,12 @@ function handleQuery(res) {
 function handleDown(ex) {
   if (playerCount != -1) {
     playerCount = -1;
-    sendMessage("Uh-oh! Is the server down?");
+    sendMessage("Uh-oh! The server may be down.");
   }
+}
+
+function checkServer() {
+  query.basicStat().then(success => handleQuery(success)).catch(ex => handleDown(ex));
 }
 
 function checkWebsite() {
@@ -81,7 +102,6 @@ function checkWebsite() {
     if (website) {
       sendWebsiteMessage("The website just went down!");
     }
-
   } else if (!website) {
     sendWebsiteMessage("The website is back up!");
   }
@@ -91,14 +111,13 @@ function checkWebsite() {
 
   }).on('error', function(e) {
     if (website) {
-      sendWebsiteMessage("Failed checking website status.");
+      sendWebsiteMessage("Hmm, failed checking website status.");
     }
   });
-
 }
 
 async function checkAll() {
-  query.basicStat().then(success => handleQuery(success)).catch(ex => handleDown(ex));
+  checkServer();
   checkWebsite();
 }
 
