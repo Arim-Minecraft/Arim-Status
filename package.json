@@ -1,7 +1,7 @@
 {
   "name": "Arim-Status",
   "description": "Discord bot for Arim Minecraft Server",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "See license file LICENSE.txt",
   "main": "bot.js",
   "engines": {
@@ -15,7 +15,6 @@
     "@discordjs/uws": "^10.149.0",
     "discord.js": "^11.5.1",
     "https": "^1.0.0",
-    "is-online": "^8.2.1",
     "minecraft-query": "^1.0.9",
     "request": "2.88.0"
   },

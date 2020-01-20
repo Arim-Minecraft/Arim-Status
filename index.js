@@ -13,11 +13,9 @@ const queryCmd = '/query';
 const Query = require("minecraft-query");
 const query = new Query(mcIP, mcPort, { timeout: 10000 });
 
-const isOnline = require('is-online');
-
 let playerCount = 0;
 
-boolean website = true;
+let website = true;
 
 client.on('message', message => {
     if (message.content === statusCmd) {
