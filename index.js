@@ -102,4 +102,4 @@ async function checkAll() {
   checkWebsite();
 }
 
-setInterval(function() { checkAll(); }, 3000);
+setInterval(function() { checkAll(); }, 60000);
