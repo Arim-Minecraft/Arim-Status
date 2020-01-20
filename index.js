@@ -2,15 +2,15 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const Query = require("minecraft-query");
-
-const query = new Query(mcIP, mcPort, { timeout: 10000 });
-
 const request = require('request');
 const statusCmd = '/status';
 const queryCmd = '/query';
 const mcIP = 'arim.space';
 const mcPort = 25565;
+
+const Query = require("minecraft-query");
+
+const query = new Query(mcIP, mcPort, { timeout: 10000 });
 
 function checkMcServer () {
   query.connect(function (err) {
