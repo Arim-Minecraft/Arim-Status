@@ -74,7 +74,7 @@ function sendWebsiteMessage(msg) {
 
 function handleQuery(res) {
     const current = res.online_players;
-    if (current != playerCount) {
+    if (typeof current !== 'undefined' && current !== null && current != playerCount) {
       playerCount = current;
       if (playerCount == 0) {
         sendMessage("No players online");
