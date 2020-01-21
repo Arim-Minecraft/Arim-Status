@@ -9,7 +9,6 @@ const statusCmd = '/status';
 const mcIP = 'arim.space';
 const mcPort = 25565;
 
-const queryCmd = '/query';
 const Query = require("minecraft-query");
 const query = new Query({host: mcIP, port: mcPort, timeout: 10000 });
 
@@ -78,9 +77,9 @@ function handleQuery(res) {
     if (current != playerCount) {
       playerCount = current;
       if (playerCount == 0) {
-        sendMessage("No more players online.");
+        sendMessage("No players online");
       } else {
-        sendMessage(playerCount + " players online!");
+        sendMessage(playerCount + " players online");
       }
     }
 }
@@ -111,7 +110,7 @@ function checkWebsite() {
 
   }).on('error', function(e) {
     if (website) {
-      sendWebsiteMessage("Hmm, failed checking website status.");
+      sendWebsiteMessage("Failed checking website status.");
     }
   });
 }
