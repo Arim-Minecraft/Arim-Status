@@ -3,7 +3,7 @@
   "description": "Discord bot for Arim Minecraft Server",
   "version": "0.2.0",
   "license": "See license file LICENSE.txt",
-  "main": "bot.js",
+  "main": "index.js",
   "engines": {
     "node": "8.x",
     "npm": "*"

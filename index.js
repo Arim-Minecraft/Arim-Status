@@ -99,9 +99,11 @@ function checkWebsite() {
   https.get('https://www.arim.space/', function(res) {
   if (res.statusCode != 200) {
     if (website) {
+      website = false;
       sendWebsiteMessage("The website just went down!");
     }
   } else if (!website) {
+    website = true;
     sendWebsiteMessage("The website is back up!");
   }
   res.on('data', function(d) {
