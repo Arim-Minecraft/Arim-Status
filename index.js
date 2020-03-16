@@ -17,6 +17,7 @@ let playerCount = 0;
 let website = true;
 
 client.on('message', message => {
+
     if (message.content === statusCmd) {
       checkAll();
       var webStatus = "The website is **online**.";
@@ -87,7 +88,7 @@ function handleQuery(res) {
 function handleDown(ex) {
   if (playerCount != -1) {
     playerCount = -1;
-    sendMessage("Uh-oh! The server may be down.");
+    sendMessage("Could not contact the server.");
   }
 }
 
