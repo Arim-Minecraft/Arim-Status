@@ -30,7 +30,7 @@ client.on('message', message => {
       } else {
         serverStatus += " Players: " + playerCount;
       }
-      message.reply("\n" + serverStatus + "\n" + webStatus);
+      message.channel.send("\n" + serverStatus + "\n" + webStatus);
         /*
         var url = 'http://mcapi.us/server/status?ip=' + mcIP + '&port=' + mcPort;
         request(url, function(err, response, body) {
