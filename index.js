@@ -6,7 +6,7 @@ const https = require('https');
 
 //const request = require('request');
 const statusCmd = '/status';
-const mcIP = 'playdirect.arim.space';
+const mcIP = '192.95.58.243';
 const mcPort = 25565;
 
 const Query = require("minecraft-query");
